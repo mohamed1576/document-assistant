@@ -11,7 +11,7 @@ from langchain_core.output_parsers import StrOutputParser
 import re
 load_dotenv()
 
-pdf_path = "time_book.pdf"
+pdf_path = "docs/time_book.pdf"
 loader = PyMuPDFLoader(pdf_path)
 
 pages = loader.load()
@@ -25,7 +25,7 @@ print("\n\n")
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 def clean_text(text):
     text = re.sub(r"\s+" , " " , text)
-    return text.split()
+    return text
 
 for doc in pages: 
     doc.page_content = clean_text(doc.page_content)

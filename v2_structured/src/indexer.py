@@ -18,5 +18,5 @@ def build_vector_store(chunks):
     return Chroma.from_documents(chunks, embeddings)
 
 
-def retriever(vector_store):
+def get_retriever(vector_store):
     return vector_store.as_retriever(search_kwargs={"k": config.TOP_K})

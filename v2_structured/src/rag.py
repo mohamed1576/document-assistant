@@ -23,9 +23,9 @@ def build_chain(retriever):
             "context": retriever | format_docs,
             "question": RunnablePassthrough(),
         }
-        |build_prompt
-        |build_model
-        |StrOutputParser
+        |build_prompt()
+        |build_model()
+        |StrOutputParser()
     )
 
 def ask (chain, question: str)-> str:

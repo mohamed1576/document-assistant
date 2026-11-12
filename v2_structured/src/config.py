@@ -4,7 +4,7 @@ CHUNK_SIZE = 500
 CHUNK_OVERLAP = 100
 SEPERATORS = ["/n/n" , "/n" , "." , " "]
 
-EMPEDDING_MODEL = "intfloat/multilingual-e5-small"
+EMBEDDING_MODEL = "intfloat/multilingual-e5-small"
 TOP_K = 5
 
 LLM_MODEL = "qwen/qwen3.8-27b"

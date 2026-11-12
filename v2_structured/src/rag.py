@@ -5,7 +5,7 @@ from langchain_groq import ChatGroq
 
 from src import config
 
-def fromat_docs(documents):
+def format_docs(documents):
     return "\n\n".join(doc.page_content for doc in documents)
 
 def build_prompt():
@@ -17,7 +17,18 @@ def build_prompt():
 def build_model():
     return ChatGroq(model=config.LLM_MODEL, temperature=config.TEMPERATURE)
 
+def build_chain(retriever):
+    return (
+        {
+            "context": retriever | format_docs,
+            "question": RunnablePassthrough(),
+        }
+        |build_prompt
+        |build_model
+        |StrOutputParser
+    )
 
 def ask (chain, question: str)-> str:
     return chain.invoke(question)
+
 
